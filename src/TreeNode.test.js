@@ -1,5 +1,5 @@
 import React from 'react'
-import { shallow } from 'enzyme'
+import { shallow, mount } from 'enzyme'
 import TreeNode from './TreeNode'
 
 it('renders without crashing', () => {
@@ -12,3 +12,13 @@ it('renders its prop `node` as a list of todos', () => {
   const wrapper = shallow(<TreeNode node={testNodes} />)
   expect(wrapper.find('ul').children().length).toBe(2)
 })
+
+it('each component contains an input form and button', () => {
+  var testNodes = {title: 'one'}
+  const wrapper = shallow(<TreeNode node={testNodes} />)
+  expect(wrapper.contains(
+    [<form><input type="text" /><input type="submit" /></form>]
+  )).toEqual(true)
+})
+
+// it('submitting text through the form creates a new <TreeNode /> component ')
