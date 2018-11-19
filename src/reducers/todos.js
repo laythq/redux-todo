@@ -4,7 +4,10 @@ const todo = (state = [], action) => {
     return [
       ...state,
       {
+        id: action.id,
+        parentId: action.parentId,
         title: action.title,
+
       }
     ]
     default:

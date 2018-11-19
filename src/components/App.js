@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import TodoList from '../containers/TodoList'
-import AddTodo from '../containers/AddTodo'
 
 class App extends React.Component {
   render() {
     return (
       <div>
-        <AddTodo />
-        <TodoList />
+        <TodoList parentId={0}/>
       </div>
     )
   }

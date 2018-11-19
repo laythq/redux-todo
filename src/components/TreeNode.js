@@ -1,4 +1,6 @@
 import React from 'react'
+import AddTodo from '../containers/AddTodo'
+import AddChild from '../containers/AddChild'
 
 export default class TreeNode extends React.Component {
   constructor() {
@@ -16,20 +18,17 @@ export default class TreeNode extends React.Component {
   }
 
   render() {
-    var children
-    // if (this.props.todos.childNodes != null){
-    //   children =
-    //       this.props.todos.childNodes.map(function(child, index) {
-    //         return <li key={index}><TreeNode node={child} /></li>
-    //       })
-    // }
+    var children =
+      this.props.todo.filter(
+        todo => todo.parentId == this.props.parentId).map(
+          todo => <TreeNode title={todo.title} todo={this.props.todo} parentId={todo.id}/>
+      )
 
     return (
       <div>
-        {this.props.todos}
-        <ul>
-          {children}
-        </ul>
+        <li>{this.props.title}</li>
+        <AddChild parentId={this.props.parentId}/>
+        <ul>{children}</ul>
       </div>
     )
   }
